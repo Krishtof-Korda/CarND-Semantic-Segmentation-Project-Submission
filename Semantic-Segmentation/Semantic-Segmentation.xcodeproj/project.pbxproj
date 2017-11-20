@@ -1,0 +1,76 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXFileReference section */
+		31A1DA701FC1250E002C5680 /* main.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = main.py; path = ../main.py; sourceTree = "<group>"; };
+		31A1DA711FC1250E002C5680 /* helper.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = helper.py; path = ../helper.py; sourceTree = "<group>"; };
+		31A1DA721FC1250E002C5680 /* project_tests.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = project_tests.py; path = ../project_tests.py; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		31A1DA691FC124DC002C5680 = {
+			isa = PBXGroup;
+			children = (
+				31A1DA711FC1250E002C5680 /* helper.py */,
+				31A1DA701FC1250E002C5680 /* main.py */,
+				31A1DA721FC1250E002C5680 /* project_tests.py */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		31A1DA6A1FC124DC002C5680 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0910;
+			};
+			buildConfigurationList = 31A1DA6D1FC124DC002C5680 /* Build configuration list for PBXProject "Semantic-Segmentation" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 31A1DA691FC124DC002C5680;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		31A1DA6E1FC124DC002C5680 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		31A1DA6F1FC124DC002C5680 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		31A1DA6D1FC124DC002C5680 /* Build configuration list for PBXProject "Semantic-Segmentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				31A1DA6E1FC124DC002C5680 /* Debug */,
+				31A1DA6F1FC124DC002C5680 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 31A1DA6A1FC124DC002C5680 /* Project object */;
+}
