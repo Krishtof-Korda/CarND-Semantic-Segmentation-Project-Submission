@@ -1,3 +1,9 @@
+# Korda's Semantic Segmentation Fully Convolutional Neural Network for Udacity Self-driving Car Engineer Nanodegree
+
+## This contains my initial solution for the project described below. I am struggling with reducing the loss after the first few epochs. I will keep working the hyperparameters to see if I can get better results. Otherwise the network trains and makes inferences as expected. 
+
+### -------Original Udacity README Below-----------
+
 # Semantic Segmentation
 ### Introduction
 In this project, you'll label the pixels of a road in images using a Fully Convolutional Network (FCN).
