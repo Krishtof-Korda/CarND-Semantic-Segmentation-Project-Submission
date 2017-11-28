@@ -186,7 +186,10 @@ def train_nn(sess, epochs, batch_size, get_batches_fn, train_op, cross_entropy_l
 
     # KK loop through epochs
     for epoch in range(epochs):
-        print('Training Epoch # {}...................'.format(epoch))
+        print('##############################################################')
+        print('........................Training Epoch # {}...................'.format(epoch))
+        print('##############################################################')
+
         # KK loop through images and labels
         for image, label in get_batches_fn(batch_size):
 
@@ -195,7 +198,7 @@ def train_nn(sess, epochs, batch_size, get_batches_fn, train_op, cross_entropy_l
             print("\nTraining label shape = {}".format(tf.shape(label)))
 
             # Training
-            _, loss = sess.run([train_op, cross_entropy_loss], feed_dict={input_image: image, correct_label: label, keep_prob: 0.5, learning_rate: 0.0009})
+            _, loss = sess.run([train_op, cross_entropy_loss], feed_dict={input_image: image, correct_label: label, keep_prob: 0.5, learning_rate: 0.0007})
             print('\nTraining Loss = {:.3f}'.format(loss))
 
     pass
@@ -241,8 +244,9 @@ def run():
         logits, train_op, cross_entropy_loss = optimize(layer_output, correct_label, learning_rate, num_classes)
 
         # TODO: Train NN using the train_nn function KK-DONE
-        epochs = 25
-        batch_size = 5
+        epochs = 5
+        batch_size = 10
+        
         sess.run(tf.global_variables_initializer())
         train_nn(sess, epochs, batch_size, get_batches_fn, train_op, cross_entropy_loss, input_image,
                  correct_label, keep_prob, learning_rate)
