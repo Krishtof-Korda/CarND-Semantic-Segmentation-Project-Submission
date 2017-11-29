@@ -8,6 +8,7 @@ from tensorflow.python.platform import gfile
 from tensorflow.core.protobuf import saved_model_pb2
 from tensorflow.python.util import compat
 
+LEARN_RATE = 0.0001
 
 # Check TensorFlow Version
 assert LooseVersion(tf.__version__) >= LooseVersion(
@@ -201,7 +202,7 @@ def train_nn(sess, epochs, batch_size, get_batches_fn, train_op, cross_entropy_l
             print("\nTraining label shape = {}".format(tf.shape(label)))
 
             # Training
-            _, loss = sess.run([train_op, cross_entropy_loss], feed_dict={input_image: image, correct_label: label, keep_prob: 0.5, learning_rate: 0.0007})
+            _, loss = sess.run([train_op, cross_entropy_loss], feed_dict={input_image: image, correct_label: label, keep_prob: 0.5, learning_rate: LEARN_RATE})
             print('\nTraining Loss = {:.3f}'.format(loss))
 
     pass
