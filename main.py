@@ -4,6 +4,9 @@ import helper
 import warnings
 from distutils.version import LooseVersion
 import project_tests as tests
+from tensorflow.python.platform import gfile
+from tensorflow.core.protobuf import saved_model_pb2
+from tensorflow.python.util import compat
 
 
 # Check TensorFlow Version
@@ -207,6 +210,28 @@ def train_nn(sess, epochs, batch_size, get_batches_fn, train_op, cross_entropy_l
 print("\n\nTesting train_nn function......")
 tests.test_train_nn(train_nn)
 
+#KK Visualize the VGG16 model from Udacity reviewer
+def graph_visualize():
+
+
+    # Path to vgg model
+    data_dir = './data'
+    vgg_path = os.path.join(data_dir, 'vgg')
+
+    with tf.Session() as sess:
+        model_filename = os.path.join(vgg_path, 'saved_model.pb')
+        with gfile.FastGFile(model_filename, 'rb') as f:
+            data = compat.as_bytes(f.read())
+            sm = saved_model_pb2.SavedModel()
+            sm.ParseFromString(data)
+            g_in = tf.import_graph_def(sm.meta_graphs[0].graph_def)
+    LOGDIR = '.'
+    train_writer = tf.summary.FileWriter(LOGDIR)
+    train_writer.add_graph(sess.graph)
+
+print("\n\nConverting .pb file to TF Summary and Saving Visualization of VGG16 graph..............")
+graph_visualize()
+
 
 def run():
     num_classes = 2
@@ -244,9 +269,9 @@ def run():
         logits, train_op, cross_entropy_loss = optimize(layer_output, correct_label, learning_rate, num_classes)
 
         # TODO: Train NN using the train_nn function KK-DONE
-        epochs = 5
-        batch_size = 10
-        
+        epochs = 20
+        batch_size = 4
+
         sess.run(tf.global_variables_initializer())
         train_nn(sess, epochs, batch_size, get_batches_fn, train_op, cross_entropy_loss, input_image,
                  correct_label, keep_prob, learning_rate)
