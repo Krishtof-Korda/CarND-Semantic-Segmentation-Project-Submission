@@ -8,7 +8,7 @@ from tensorflow.python.platform import gfile
 from tensorflow.core.protobuf import saved_model_pb2
 from tensorflow.python.util import compat
 
-LEARN_RATE = 0.0001
+LEARN_RATE = 9e-5
 
 # Check TensorFlow Version
 assert LooseVersion(tf.__version__) >= LooseVersion(
@@ -160,11 +160,16 @@ def optimize(nn_last_layer, correct_label, learning_rate, num_classes):
     # KK Get the loss of the network
     cross_entropy_loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=logits, labels=correct_label))
 
+    #KK Regularization loss collector....Don't really understand this
+    reg_losses = tf.get_collection(tf.GraphKeys.REGULARIZATION_LOSSES)
+    reg_constant = 0.01  # Choose an appropriate one.
+    loss = cross_entropy_loss + reg_constant * sum(reg_losses)
+
     # KK Minimize the loss using Adam Optimizer
-    optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate, beta1=0.9, beta2=0.999, epsilon=0.1)
+    optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate, beta1=0.9, beta2=0.999, epsilon=1e-8)
     train_op = optimizer.minimize(cross_entropy_loss)
 
-    return logits, train_op, cross_entropy_loss
+    return logits, train_op, loss
 
 
 print("\n\nTesting optimize function......")
@@ -230,8 +235,8 @@ def graph_visualize():
     train_writer = tf.summary.FileWriter(LOGDIR)
     train_writer.add_graph(sess.graph)
 
-print("\n\nConverting .pb file to TF Summary and Saving Visualization of VGG16 graph..............")
-graph_visualize()
+#print("\n\nConverting .pb file to TF Summary and Saving Visualization of VGG16 graph..............")
+#graph_visualize()
 
 
 def run():
@@ -270,7 +275,7 @@ def run():
         logits, train_op, cross_entropy_loss = optimize(layer_output, correct_label, learning_rate, num_classes)
 
         # TODO: Train NN using the train_nn function KK-DONE
-        epochs = 20
+        epochs = 25
         batch_size = 4
 
         sess.run(tf.global_variables_initializer())
