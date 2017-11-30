@@ -1,6 +1,7 @@
 # Korda's Semantic Segmentation Fully Convolutional Neural Network for Udacity Self-driving Car Engineer Nanodegree
 
-![alt text](./um_000001.png)
+# [YouTube Video Click to PLAY!](https://youtu.be/gS9pV2iSHOs)
+[![alt text](./um_000001.png)](https://youtu.be/gS9pV2iSHOs)
 
 
 
