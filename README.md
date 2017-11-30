@@ -53,6 +53,9 @@ Once implemented the tweaking began. I tuned the `LEARN_RATE = 9e-5`, `epochs = 
     loss = cross_entropy_loss + reg_constant * sum(reg_losses)
 ```
 
+## Example before fine tuning:
+![alt text](./um_000005.png)
+
 ## The final results:
 Once properly tuned the FCN produced a trained loss of approximately 0.03. This led to very good classification of pixels that were considered road.
 
