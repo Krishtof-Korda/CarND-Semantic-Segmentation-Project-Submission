@@ -24,7 +24,7 @@ The function `optimize` contains the AdamOptimizer which reduces the loss of the
 The function `train_nn` contains the code to loop through the epochs and batches during training.
 The function `graph_visualize` is used to visualize the original VGG16 graph. Below is the visualization:
 
-![alt text](./graph_run=.png)
+<img src="./graph_run=.png" width="200" height="400" align="middle" />
 
 The function `run` runs the training process.
 
