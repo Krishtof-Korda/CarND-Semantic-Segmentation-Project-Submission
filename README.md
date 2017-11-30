@@ -22,7 +22,10 @@ The function `load_vgg` loads the VGG16 pre-trained graph that will be used as t
 The function `layers` contains the decoder of the network to preserve spatial information using 1x1 transpose convolutions.
 The function `optimize` contains the AdamOptimizer which reduces the loss of the network during training.
 The function `train_nn` contains the code to loop through the epochs and batches during training.
-The function `graph_visualize` is used to visualize the original VGG16 graph.
+The function `graph_visualize` is used to visualize the original VGG16 graph. Below is the visualization:
+
+![alt text](./graph_run=.png)
+
 The function `run` runs the training process.
 
 Once implemented the tweaking began. I tuned the `LEARN_RATE = 9e-5`, `epochs = 25`, `batch_size = 4` to train properly and minimize loss while not eating up too much memory. The other items which were needed to get proper inferences were a kernel regularizer and initializer, as well as an addition of regularized loss. Code snippets of each as shown below:
