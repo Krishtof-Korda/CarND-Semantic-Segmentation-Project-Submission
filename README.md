@@ -1,6 +1,69 @@
 # Korda's Semantic Segmentation Fully Convolutional Neural Network for Udacity Self-driving Car Engineer Nanodegree
 
-## This contains my initial solution for the project described below. I am struggling with reducing the loss after the first few epochs. I will keep working the hyperparameters to see if I can get better results. Otherwise the network trains and makes inferences as expected. 
+![alt text](./um_000017.png)
+
+
+
+## This is my submission for the CarND-Semantic-Segmentation-Project described below.
+
+## Click [Project Rubric](https://review.udacity.com/#!/rubrics/989/view) for specifications.
+
+## A quick overview of what semantic segmentation is:
+Semantic segmentation is the process of using a Fully Convolutional Neural Network to classify, at the pixel level, which parts of an image contain an object or class of interest. Usually, when using a neural network for image classification we are asking the network what class it believes is in the image as a whole, i.e. "this is an image of a cat". In semantic segmentation we are asking the network which pixel in the image contain a cat. This is very useful since there may be more than one class in an image, i.e. a cat and a dog. With semantic segmentation we can classify each pixel as belonging to a specific class or no class (background).
+
+## Techniques for Semantic Segmentation:
+The method for doing semantic segmentation that we learned in the lessons revolves around VGG16, a well known pre-trained image classifier. The details of how VGG16 is used as an encoder as well as converting it to a fully convolutional network as illustrated in [this paper.](https://people.eecs.berkeley.edu/~jonlong/long_shelhamer_fcn.pdf)
+
+## My contributions and implementation:
+We were given a template for `main.py` which needed to be filled in with the decoder (fully convolutional layers). We were also given `helper.py` functions. I implemented the following functions: `load_vgg()`, `layers()`, `optimize()`, `train_nn()`, `graph_visualize()`, and `run()`.
+
+The function `load_vgg` loads the VGG16 pre-trained graph that will be used as the encoder.
+The function `layers` contains the decoder of the network to preserve spatial information using 1x1 transpose convolutions.
+The function `optimize` contains the AdamOptimizer which reduces the loss of the network during training.
+The function `train_nn` contains the code to loop through the epochs and batches during training.
+The function `graph_visualize` is used to visualize the original VGG16 graph.
+The function `run` runs the training process.
+
+Once implemented the tweaking began. I tuned the `LEARN_RATE = 9e-5`, `epochs = 25`, `batch_size = 4` to train properly and minimize loss while not eating up too much memory. The other items which were needed to get proper inferences were a kernel regularizer and initializer, as well as an addition of regularized loss. Code snippets of each as shown below:
+
+```# KK Hyperparameters: Regularizer, Initializer, etc.
+    l2_value = 1e-3
+    kernel_reg = tf.contrib.layers.l2_regularizer(l2_value)
+    stddev = 1e-3
+    kernel_init = tf.random_normal_initializer(stddev=stddev)
+
+    # KK 1x1 convolution to preserve spatial information
+    conv_1x1_7 = tf.layers.conv2d(vgg_layer7_out, num_classes,
+                                  kernel_size=1,
+                                  strides=(1, 1),
+                                  padding='same',
+                                  kernel_regularizer=kernel_reg,
+                                  kernel_initializer=kernel_init)
+```
+
+```
+#KK Regularization loss collector
+    reg_losses = tf.get_collection(tf.GraphKeys.REGULARIZATION_LOSSES)
+    reg_constant = 0.01  # Choose an appropriate one.
+    loss = cross_entropy_loss + reg_constant * sum(reg_losses)
+```
+
+## Below are some examples of my implementations inferences (results):
+
+
+![alt text](./um_000017.png)
+
+![alt text](./um_000017.png)
+
+![alt text](./um_000017.png)
+
+![alt text](./um_000017.png)
+
+![alt text](./um_000017.png)
+
+
+
+
 
 ### -------Original Udacity README Below-----------
 
