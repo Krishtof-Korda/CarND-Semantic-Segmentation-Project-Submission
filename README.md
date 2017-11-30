@@ -1,6 +1,6 @@
 # Korda's Semantic Segmentation Fully Convolutional Neural Network for Udacity Self-driving Car Engineer Nanodegree
 
-![alt text](./1.png)
+![alt text](./um_000001.png)
 
 
 
@@ -54,16 +54,17 @@ Once properly tuned the FCN produced a trained loss of approximately 0.03. This 
 
 ## Below are some examples of my implementations inferences (results):
 
+![alt text](./um_000000.png)
 
-![alt text](./1.png)
+![alt text](./um_000001.png)
 
-![alt text](./2.png)
+![alt text](./um_000002.png)
 
-![alt text](./3.png)
+![alt text](./um_000003.png)
 
-![alt text](./4.png)
+![alt text](./um_000004.png)
 
-![alt text](./5.png)
+![alt text](./um_000005.png)
 
 
 
