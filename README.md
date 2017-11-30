@@ -1,6 +1,6 @@
 # Korda's Semantic Segmentation Fully Convolutional Neural Network for Udacity Self-driving Car Engineer Nanodegree
 
-![alt text](./um_000017.png)
+![alt text](./1.png)
 
 
 
@@ -9,7 +9,8 @@
 ## Click [Project Rubric](https://review.udacity.com/#!/rubrics/989/view) for specifications.
 
 ## A quick overview of what semantic segmentation is:
-Semantic segmentation is the process of using a Fully Convolutional Neural Network to classify, at the pixel level, which parts of an image contain an object or class of interest. Usually, when using a neural network for image classification we are asking the network what class it believes is in the image as a whole, i.e. "this is an image of a cat". In semantic segmentation we are asking the network which pixel in the image contain a cat. This is very useful since there may be more than one class in an image, i.e. a cat and a dog. With semantic segmentation we can classify each pixel as belonging to a specific class or no class (background).
+Semantic segmentation is the process of using a Fully Convolutional Neural Network to classify, at the pixel level, which parts of an image contain an object or class of interest. Usually, when using a neural network for image classification we are asking the network what class it believes is in the image as a whole, i.e. "this is an image of a cat". In semantic segmentation we are asking the network which pixel in the image contain a cat. This is very useful since there may be more than one class in an image, i.e. a cat and a dog. With semantic segmentation we can classify each pixel as belonging to a specific class or no class (background). 
+### In this project we were asked to classify pixels as road or not road.
 
 ## Techniques for Semantic Segmentation:
 The method for doing semantic segmentation that we learned in the lessons revolves around VGG16, a well known pre-trained image classifier. The details of how VGG16 is used as an encoder as well as converting it to a fully convolutional network as illustrated in [this paper.](https://people.eecs.berkeley.edu/~jonlong/long_shelhamer_fcn.pdf)
@@ -48,18 +49,21 @@ Once implemented the tweaking began. I tuned the `LEARN_RATE = 9e-5`, `epochs = 
     loss = cross_entropy_loss + reg_constant * sum(reg_losses)
 ```
 
+## The final results:
+Once properly tuned the FCN produced a trained loss of approximately 0.03. This led to very good classification of pixels that were considered road.
+
 ## Below are some examples of my implementations inferences (results):
 
 
-![alt text](./um_000017.png)
+![alt text](./1.png)
 
-![alt text](./um_000017.png)
+![alt text](./2.png)
 
-![alt text](./um_000017.png)
+![alt text](./3.png)
 
-![alt text](./um_000017.png)
+![alt text](./4.png)
 
-![alt text](./um_000017.png)
+![alt text](./5.png)
 
 
 
